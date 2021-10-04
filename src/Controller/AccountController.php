@@ -25,7 +25,9 @@ class AccountController extends AbstractController
         $accountManager = new AccountManager();
         $accounts = $accountManager->selectAll();
 
-        return $this->twig->render('Account/index.html.twig', ['accounts' => $accounts]);
+        return $this->twig->render('Account/index.html.twig', [
+            'accounts' => $accounts,
+        ]);
     }
 
 
@@ -42,6 +44,11 @@ class AccountController extends AbstractController
     {
         $accountManager = new AccountManager();
         $account = $accountManager->selectOneById($id);
+
+        if(!$id || !$account)
+        {
+            header("Location: /account");
+        }
 
         return $this->twig->render('Account/show.html.twig', ['account' => $account]);
     }
@@ -61,9 +68,37 @@ class AccountController extends AbstractController
         $accountManager = new AccountManager();
         $account = $accountManager->selectOneById($id);
 
+        if(!$id || !$account)
+        {
+            header("Location: /account");
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $account['title'] = $_POST['title'];
-            $accountManager->update($account);
+            $account['id'] = $_POST['id'];
+            $account['firstname'] = $_POST['firstname'];
+            $account['lastname'] = $_POST['lastname'];
+            $account['username'] = $_POST['username'];
+            $account['password'] = $_POST['password'];
+            if(isset($_POST['role']))
+            {
+                $account['role'] = 'ADMIN';
+            }
+            else
+            {
+                $account['role'] = 'USER';
+            }
+            $account['birthday'] = $_POST['birthday'];
+            $account['address'] = $_POST['address'];
+            $account['city'] = $_POST['city'];
+            $account['postal_code'] = $_POST['postal_code'];
+            $account['phone'] = $_POST['phone'];
+            
+            
+            if($account['firstname'] && $account['lastname'] && $account['username'] && $account['username'])
+            {
+                $id = $accountManager->update($account);
+                header("Location: /account");
+            }
         }
 
         return $this->twig->render('Account/edit.html.twig', ['account' => $account]);
@@ -80,14 +115,34 @@ class AccountController extends AbstractController
      */
     public function add()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $accountManager = new AccountManager();
             $account = [
-                'title' => $_POST['title'],
+                'firstname' => $_POST['firstname'],
+                'lastname' => $_POST['lastname'],
+                'username' => $_POST['username'],
+                'password' => $_POST['password'],
+                'birthday' => $_POST['birthday'],
+                'address' => $_POST['address'],
+                'city' => $_POST['city'],
+                'postal_code' => $_POST['postal_code'],
+                'phone' => $_POST['phone'],
             ];
-            $id = $accountManager->insert($account);
-            header('Location:/account/show/' . $id);
+            
+            if(isset($_POST['role']))
+            {
+                $account['role'] = 'ADMIN';
+            }
+            else
+            {
+                $account['role'] = 'USER';
+            }
+
+            if($account['firstname'] && $account['lastname'] && $account['username'] && $account['username'])
+                {
+                    $id = $accountManager->insert($account);
+                    header('Location:/account/show/' . $id);
+                }
         }
 
         return $this->twig->render('Account/add.html.twig');

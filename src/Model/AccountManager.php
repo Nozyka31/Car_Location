@@ -25,9 +25,21 @@ class AccountManager extends AbstractManager
     public function insert(array $account): int
     {
         // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`title`) VALUES (:title)");
-        $statement->bindValue('title', $account['title'], \PDO::PARAM_STR);
-
+        $sql = "INSERT INTO " . self::TABLE .
+            "(`firstname`, `lastname`, `username`, `password`, `role`, `birthday`, `address`, `city`, `postal_code`, `phone`)
+        VALUES
+        (:firstname, :lastname, :username, :password, :role, :birthday, :address, :city, :postal_code, :phone)";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(':firstname', $account['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $account['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':username', $account['username'], \PDO::PARAM_STR);
+        $statement->bindValue(':password', $account['password'], \PDO::PARAM_STR);
+        $statement->bindValue(':role', $account['role'], \PDO::PARAM_STR);
+        $statement->bindValue(':birthday', $account['birthday'], \PDO::PARAM_STR);
+        $statement->bindValue(':address', $account['address'], \PDO::PARAM_STR);
+        $statement->bindValue(':city', $account['city'], \PDO::PARAM_STR);
+        $statement->bindValue(':postal_code', $account['postal_code'], \PDO::PARAM_STR);
+        $statement->bindValue(':phone', $account['phone'], \PDO::PARAM_STR);
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
@@ -52,11 +64,39 @@ class AccountManager extends AbstractManager
      */
     public function update(array $account): bool
     {
+        // prepared request
+        $sql = "UPDATE " 
+        . self::TABLE .
+        " SET 
+        `firstname` = :firstname,
+        `lastname` = :lastname,
+        `username` = :username,
+        `password` = :password,
+        `role` = :role,
+        `birthday` = :birthday,
+        `address` = :address,
+        `city` = :city,
+        `postal_code` = :postal_code,
+        `phone` = :phone
+        WHERE id=:id";
 
         // prepared request
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
+        $statement = $this->pdo->prepare($sql);
         $statement->bindValue('id', $account['id'], \PDO::PARAM_INT);
-        $statement->bindValue('title', $account['title'], \PDO::PARAM_STR);
+        $statement->bindValue(':firstname', $account['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $account['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':username', $account['username'], \PDO::PARAM_STR);
+        $statement->bindValue(':password', $account['password'], \PDO::PARAM_STR);
+        $statement->bindValue(':role', $account['role'], \PDO::PARAM_STR);
+        $statement->bindValue(':birthday', $account['birthday'], \PDO::PARAM_STR);
+        $statement->bindValue(':address', $account['address'], \PDO::PARAM_STR);
+        $statement->bindValue(':city', $account['city'], \PDO::PARAM_STR);
+        $statement->bindValue(':postal_code', $account['postal_code'], \PDO::PARAM_INT);
+        $statement->bindValue(':phone', $account['phone'], \PDO::PARAM_STR);
+
+        if ($statement->execute()) {
+            return (int)$this->pdo->lastInsertId();
+        }
 
         return $statement->execute();
     }
