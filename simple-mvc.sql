@@ -1,39 +1,27 @@
-SET
-  SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET
-  time_zone = "+00:00";
-  /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-  /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-  /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-  /*!40101 SET NAMES utf8mb4 */;
--- --------------------------------------------------------
+
+  DROP TABLE IF EXISTS `users`;
   --
   -- Table `item` structure
   --
-  CREATE TABLE `item` (
-    `id` int(11) UNSIGNED NOT NULL,
-    `title` varchar(255) NOT NULL
-  ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
---
+  CREATE TABLE `users` (
+  `id` INT NOT NULL AUTO_INCREMENT, 
+  `firstname` VARCHAR(100) NOT NULL, 
+  `lastname` VARCHAR(100) NOT NULL, 
+  `username` VARCHAR(100) NOT NULL, 
+  `password` VARCHAR(100) NOT NULL, 
+  `role` VARCHAR(100) NOT NULL, 
+  `birthday` DATE NOT NULL, 
+  `address` VARCHAR(100) NOT NULL,
+  `city` VARCHAR(100) NOT NULL,
+  `postal_code` INT NOT NULL,
+  `phone` VARCHAR(100) NOT NULL,
+  `rate` float NOT NULL,
+  PRIMARY KEY (`id`)
+);
   -- Content of table `item`
   --
 INSERT INTO
-  `item` (`id`, `title`)
+  `users` (`id`, `firstname`, `lastname`, `username`, `password`, `role`, `birthday`, `address`, `city`, `postal_code`, `phone`, `rate`)
 VALUES
-  (1, 'Stuff'),
-  (2, 'Doodads');
---
-  -- Id for table `item`
-  --
-ALTER TABLE
-  `item`
-ADD
-  PRIMARY KEY (`id`);
-ALTER TABLE
-  `item`
-MODIFY
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 3;
-  /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-  /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-  /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  (1, 'Irons', 'Jeremy', 'JIrons', 'abcd1234', 'USER', '09/01/1973', '13 rue du poteau carré', 'Clichy', 92000, '05 06 07 19 23', 4.5),
+  (2, 'Dalton', 'Joe', 'JD', 'abcd1234', 'USER', '09/01/1933', '2 rue des pommiers', 'Texas', 45120, '01 23 45 67 89', 5);
