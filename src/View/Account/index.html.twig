@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Accounts</h1>
+
+    <table class="table table-striped">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Username</th>
+        <th>Birthday</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Postal Code</th>
+        <th>Phone</th>
+        <th>Rate</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for account in accounts %}
+        <tr>
+            <td>{{ account.id }}</td>
+            <td>{{ account.firstname }}</td>
+            <td>{{ account.lastname }}</td>
+            <td>{{ account.username }}</td>
+            <td>{{ account.birthday }}</td>
+            <td>{{ account.address }}</td>
+            <td>{{ account.city }}</td>
+            <td>{{ account.postal_code }}</td>
+            <td>{{ account.phone }}</td>
+            <td>{{ account.rate }}</td>
+            <td>
+                <a class="btn btn-warning me-2" href="/account/show/{{ account.id }}">Show</a>
+                <a class="btn btn-success" href="/account/edit/{{ account.id }}">Edit</a>
+            </td>
+        </tr>
+        {% else %}
+            <td>Nothing to display</td>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/account/add" class="btn btn-dark">Enter a new Account !</a>
+{% endblock %}
