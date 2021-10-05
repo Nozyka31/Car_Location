@@ -1,13 +1,36 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Items</h1>
-    <ul>
-        {% for item in items %}
-            <li><a href="/item/show/{{ item.id }}">{{ item.id }}. {{ item.title }}</a></li>
+    <h1>Announces</h1>
+    <table classe="table table-striped">
+    <thead>
+    <tr>
+            <th>ID</th>
+            <th>Mark</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Power</th>
+            <th>Price</th>
+       </tr>
+    </thead>
+    <tbody>
+        {% for announce in announces %}
+           <tr>
+            <td>{{announce.id}}</td>
+            <td>{{announce.mark}}</td>
+            <td>{{announce.model}}</td>
+            <td>{{announce.color}}</td>
+            <td>{{announce.power}}</td>
+             <td>{{announce.price}}</td>
+             <td>
+                <a class="btn btn-warning me-2" href="/announce/show/{{ announce.id }}">Show</a>
+                <a class="btn btn-success" href="/announce/edit/{{ announce.id }}">Edit</a>
+            </td>
+           </tr>
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
-    </ul>
-    <a href="/item/add">Add</a>
+        </tbody>
+    </table>
+    <a href="/annonce/add">Add</a>
 {% endblock %}
