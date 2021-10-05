@@ -16,3 +16,80 @@
     <p>you can try the app with <a href="/announce">announce</a> or <a href="/account">account</a></p>
     <p>Chat <a href="/message">here</a>!</p>
 {% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Page d'accueil</title>
+</head>
+<body>
+    
+      <div class="d-flex justify-content-between align-items-center mx-4" id="navbar">
+          <img class="nav-item" src="../IMG_0991.PNG" alt="logo" style="width: 11rem">
+            <section class="nav-item mt-2">Site de voitures de location en ligne </section>
+          </ul>
+          <a class="nav-item mt-2" href="../Account/account.html">Mon compte</a>
+      </div>
+
+<header>
+<div id="search" class="d-flex flex-row justify-content-center">
+    <p class="mx-3 mt-5 pt-4">Choisir la ville : <input type="text" name="" ></p>
+    <p class="mx-3 mt-5 pt-4">Le :<input type="date" name=""></p>
+    <p class="mx-3 mt-5 pt-4">A : <input type="time" name="" ></p>
+</div>
+<div class="d-flex justify-content-end m-3">
+    <input type="submit" value="Rechercher"{{voitures.sql}}>
+</div>
+</header>
+
+    <main class="d-flex flex-row justify-content-center">
+        <!--Résultat 1-->
+        <div class="card m-3" style="width: 18rem;">
+    <img src="../renault megane.jpg" class="card-img-top" alt="" width="17rem">
+    <p>MATRICULE : HI-808-MO</p>
+    <p>MARQUE : RENAUD</p>
+    <p>MODELE : MEGANE</p>
+    <p>COULEUR : GRISE</p>
+    <p>PUISSANCE : 200ch</p>
+    <a href="#" class="btn btn-primary">Louer</a>
+  </div>
+        </div>
+        <!--Résultat 2-->
+        <div class="card m-3" style="width: 18rem;">
+      <img src="../audi TT.jpg" class="card-img-top" alt="" width="17rem">
+    <p>MATRICULE : YO-609-YO</p>
+    <p>MARQUE : AUDI</p>
+    <p>MODELE : TT</p>
+    <p>COULEUR : BLEUE</p>
+    <p>PUISSANCE : 250CH</p>
+      <a href="#" class="btn btn-primary">Louer</a>
+  </div>
+</div>
+<!--Résultat 3-->
+<div class="card m-3" style="width: 18rem;">
+  <img src="../citroen saxo.jpg" class="card-img-top" alt="" width="17rem">
+  <div class="card-body">
+    <!--<h5> , <p> et <a> en PHP-->
+      <p>MATRICULE : GH-753-UJ</p>
+      <p>MARQUE : CITROEN</p>
+      <p>MODELE : SAXO</p>
+      <p>COULEUR : DORE</p>
+      <p>PUISSANCE : 3p</p>
+        <a href="#" class="btn btn-primary">Louer</a>
+  </div>
+</div>
+<!--Autres résultats : en PHP-->
+    </main>
+    <footer>
+
+    </footer>
+    <script src="../../bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
