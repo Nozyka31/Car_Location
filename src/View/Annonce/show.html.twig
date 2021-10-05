@@ -1,8 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Anounce {{ announce.title }}</h1>
-    <p>{{ announce.id }}. {{ announce.title }}</p>
+    <h3>{{ announce.mark}}{{ announce.model}}</h3>
+    <p class="cad-text">Registration number : {{ announce.regNumber}}</p>
+    <p class="cad-text">Color : {{ announce.color}}</p>
+    <p class="cad-text">Power : {{ announce.power}}</p>
+    <p class="cad-text">Price : {{ announce.price}}</p>
     <a href="/annonce/edit/{{ announce.id }}">Edit</a>
     <a href="/annonce/delete/{{announce.id}}">Delete</a>
     <br>
