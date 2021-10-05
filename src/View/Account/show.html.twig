@@ -1,10 +1,23 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Item {{ item.title }}</h1>
-    <p>{{ item.id }}. {{ item.title }}</p>
-    <a href="/item/edit/{{ item.id }}">Edit</a>
-    <a href="/item/delete/{{item.id}}">Delete</a>
-    <br>
-    <a href="/item/">Back to list</a>
+    <h1>Account {{ account.firstname|capitalize }} {{ account.lastname|capitalize }}</h1>
+    
+    <div class="card border-primary mt-3 mb-3 col-4">
+                    <h5 class="card-title card-header bg-warning">{{ account.firstname|capitalize }} {{ account.lastname|capitalize }}</h5>
+            <div class="card-body">
+            <p class="card-text">Username : {{ account.username }}</p>
+            <p class="card-text">Birthday : {{ account.birthday|date("d/m/Y") }}</p>
+            <p class="card-text">Live in : {{ account.address }}, {{ account.postal_code }} in {{ account.city }}</p>
+            <p class="card-text">Phone number : {{ account.phone }}</p>
+            <p class="card-text">Rate : {{ account.rate }}</p>
+            {% if(account.role == 'ADMIN') %} 
+                <p class="card-text">Vous êtes administrateur de ce site.</p>
+            {% endif %}
+
+            <a class="btn btn-success" href="/account/edit/{{ account.id }}">Edit</a>
+            <a class="btn btn-danger" href="/account/delete/{{account.id}}">Delete</a>
+        </div>
+    </div> 
+    <a class="btn btn-primary mt-3 mb-3" href="/account">Back to list</a>
 {% endblock %}

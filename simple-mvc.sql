@@ -15,7 +15,7 @@
   `city` VARCHAR(100) NOT NULL,
   `postal_code` INT NOT NULL,
   `phone` VARCHAR(100) NOT NULL,
-  `rate` float NOT NULL,
+  `rate` float NULL,
   PRIMARY KEY (`id`)
 );
   -- Content of table `item`
