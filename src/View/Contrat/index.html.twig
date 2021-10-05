@@ -1,13 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Items</h1>
+    <h1>contrats</h1>
     <ul>
-        {% for item in items %}
-            <li><a href="/item/show/{{ item.id }}">{{ item.id }}. {{ item.title }}</a></li>
+        {% for contrat in contrats %}
+            <li><a href="/contrat/show/{{ contrat.id }}">{{ contrat.id }}. {{ contrat.title }}</a></li>
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
     </ul>
-    <a href="/item/add">Add</a>
+    <a href="/contrat/add">Add</a>
 {% endblock %}

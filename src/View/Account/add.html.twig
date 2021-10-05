@@ -3,9 +3,9 @@
 {% block content %}
     <h1>Create your account</h1>
     <form method="post">
-    <input type="hidden" value="{{ item.id }}" name="id">
-    <input type="text" value="{{ item.title }}" name="title">
+    <input type="hidden" value="{{ account.id }}" name="id">
+    <input type="text" value="{{ account.title }}" name="title">
     <input type="submit" value="Add">
 </form>
-<a href="/item">back to list</a>
+<a href="/account">back to list</a>
 {% endblock %}
