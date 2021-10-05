@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Announces</h1>
+    <p>Here are the results for your research.</p>
+        {% for announce in announces %}
+            <a href="/announce/show/{{announce.id}}" class="announce">
+                <div class="card border-secondary mb-3">
+                    <div class="card-body d-flex flex-row justify-content-start">
+                        <div class="card-body div_announce">
+                            <img src="{{ announce.picture }}" class="card-img-top img_announce img-fluid;" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">{{ announce.title }}</h3>
+                            <h5 class="card-text">{{ announce.brand }} {{ announce.model }}</h5>
+                            <p class="card-text">{{ announce.daily_price }}€/day</p>
+                            <p class="card-text">{{ announce.year }} | {{ announce.kilometers }}km</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    <a href="/announce/add">Add</a>
+{% endblock %}

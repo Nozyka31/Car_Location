@@ -1,0 +1,60 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Create an announce</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+            <input type="hidden" value={{ announce.id }} name="id">
+            <div class="form-group">
+                <label class="col-form-label" for="title">Title of your announce : </label>
+                <input type="text" class="form-control border border-3" name="title" value={{ announce.title }}>
+            </div>
+            <div class="d-flex row">
+                <div class="form-group col-6">
+                    <label class="col-form-label" for="brand">Brand : </label>
+                    <input type="text" class="form-control border border-3" name="brand" value={{ announce.brand }}>
+                </div>
+                <div class="form-group col-6">
+                    <label class="col-form-label" for="model">Model : </label>
+                    <input type="text" class="form-control border border-3" name="model" value={{ announce.model }}>
+                </div>
+            </div>
+            <div class="d-flex row">
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="registration_number">Registration number : </label>
+                    <input type="text" class="form-control border border-3" name="registration_number" value={{ announce.registration_number }}>
+                </div>
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="year">Year : </label>
+                    <input type="year" class="form-control border border-3" name="year" value={{ announce.year }}>
+                </div>
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="kilometers">Kilometers : </label>
+                    <input type="number" class="form-control border border-3" name="kilometers" value={{ announce.kilometers }}>
+                </div>
+            </div>
+            <div class="d-flex row">
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="color">Color : </label>
+                    <input type="text" class="form-control border border-3" name="color" value={{ announce.color }}>
+                </div>
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="daily_price">Daily Price : </label>
+                    <input type="number" class="form-control border border-3" name="daily_price" value={{ announce.daily_price }}>
+                </div>
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="power">Power : </label>
+                    <input type="number" class="form-control border border-3" name="power" value={{ announce.power }}>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label" for="picture">Post a picture of your vehicle : </label>
+                <input type="file" accept="image/png, image/jpeg, image/jpg" class="form-control border border-3" name="picture" >
+            </div>
+
+            <input type="submit" class="btn btn-success mt-3 mb-3" value="Update">
+            <a class="btn btn-warning" href="/announce">Cancel</a>
+            <a href="/announce/delete/{{announce.id}}" class="btn btn-danger">Delete</a>
+        </form>
+    <a class="btn btn-dark" href="/announce">Back to list</a>
+{% endblock %}
