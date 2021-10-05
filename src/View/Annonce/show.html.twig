@@ -2,10 +2,14 @@
 
 {% block content %}
     <h3>{{ announce.mark}}{{ announce.model}}</h3>
-    <p class="cad-text">Registration number : {{ announce.regNumber}}</p>
-    <p class="cad-text">Color : {{ announce.color}}</p>
-    <p class="cad-text">Power : {{ announce.power}}</p>
-    <p class="cad-text">Price : {{ announce.price}}</p>
+     <p class="card-text">{{ announce.picture}}</p>
+    <p class="card-text">Registration number : {{ announce.regNumber}}</p>
+    <p class="card-text">Color : {{ announce.color}}</p>
+    <p class="card-text">Power : {{ announce.power}}</p>
+    <p class="card-text">Kilometers : {{ announce.km}}</p>
+    <p class="card-text">Year : {{ announce.year}}</p>
+    <p class="card-text">Rating : {{ announce.rating}}</p>
+    <p class="card-text">Price : {{ announce.price}}</p>
     <a href="/annonce/edit/{{ announce.id }}">Edit</a>
     <a href="/annonce/delete/{{announce.id}}">Delete</a>
     <br>
