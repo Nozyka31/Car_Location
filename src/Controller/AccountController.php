@@ -94,7 +94,7 @@ class AccountController extends AbstractController
             $account['phone'] = $_POST['phone'];
             
             
-            if($account['firstname'] && $account['lastname'] && $account['username'] && $account['username'])
+            if($account['firstname'] && $account['lastname'] && $account['username'] && $account['password'])
             {
                 $id = $accountManager->update($account);
                 header("Location: /account");
