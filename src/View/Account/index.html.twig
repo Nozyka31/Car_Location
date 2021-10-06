@@ -1,3 +1,9 @@
+{% if(session.role) == 'ADMIN' %} 
+    <h2>Bienvenue sur la page admin</h2>
+{% endif %} 
+
+
+
 {% extends 'layout.html.twig' %}
 
 {% block content %}
