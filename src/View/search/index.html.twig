@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>search</h1>
+    
+    
+    
+        {% for search in search %}
+        <tr>
+           
+            <li><a href="/search/show/{{ search.id }}">{{ search.id }}. {{ search.firstname}}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/search/add">Add</a>
+{% endblock %}

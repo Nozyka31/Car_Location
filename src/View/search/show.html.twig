@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>search {{ search.firstname }}</h1>
+    <p>{{ search.id }}. {{ search.firstname }}</p>
+    <a href="/search/edit/{{ search.id }}">Edit</a>
+    <a href="/search/delete/{{search.id}}">Delete</a>
+    <br>
+    <a href="/search/">Back to list</a>
+{% endblock %}

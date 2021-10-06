@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Add a new search</h1>
+    <form method="post">
+            <input type="hidden" value={{ search.id }} name="id">
+            <div class="d-flex row">
+                <div class="form-group col-6">
+                    <label class="col-form-label" for="car_id ">Car_id : </label>
+                    <input type="text" class="form-control border border-3" name="car_id" value={{ car_id }}>
+                </div>
+                <div class="form-group col-6">
+                    <label class="col-form-label" for="Type">Type : </label>
+                    <input type="text" class="form-control border border-3" name="Type" value={{ search.Type }}>
+                </div>
+            </div>
+            <div class="d-flex row">
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="Year">Year : </label>
+                    <input type="text" class="form-control border border-3" name="Year" value={{ search.Year }}>
+                </div>
+                <div class="d-flex row">
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="Desciption">Desciption : </label>
+                    <input type="text" class="form-control border border-3" name="Desciption" value={{ search.Desciption }}>
+                </div>
+            </div>
+            <div class="d-flex row">
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="Price">Price : </label>
+                    <input type="text" class="form-control border border-3" name="Price" value={{ search.Price }}>
+                </div>
+                <div class="d-flex row">
+                <div class="form-group col-4">
+                    <label class="col-form-label" for="Kms">Kms : </label>
+                    <input type="text" class="form-control border border-3" name="Kms" value={{ search.Kms }}>
+                </div>
+            </div>
+            <div class="d-flex row">
+                <div class="form-group col-6">
+                    <label class="col-form-label" for="Rating">Rating : </label>
+                    <input type="text" class="form-control border border-3" name="Rating" value={{ search.Rating }}>
+                </div>
+            </div>
+<a href="/search">back to list</a>
+{% endblock %}
