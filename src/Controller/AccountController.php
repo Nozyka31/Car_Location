@@ -117,25 +117,39 @@ class AccountController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $accountManager = new AccountManager();
-            $account = [
-                'firstname' => $_POST['firstname'],
-                'lastname' => $_POST['lastname'],
-                'username' => $_POST['username'],
-                'password' => $_POST['password'],
-                'birthday' => $_POST['birthday'],
-                'address' => $_POST['address'],
-                'city' => $_POST['city'],
-                'postal_code' => $_POST['postal_code'],
-                'phone' => $_POST['phone'],
-            ];
+
+            $alreadyUsed = $accountManager->selectOneByEmail($_POST['email']);
             
-            if(isset($_POST['role']))
+            if(!$alreadyUsed && isset(
+                $_POST["password"],
+                $_POST['firstname'],
+                $_POST['lastname'],
+                $_POST['email'],
+                $_POST['username'],
+                $_POST['password'],
+                $_POST['address'],
+                $_POST['city'],
+                $_POST['postal_code'],
+                $_POST['phone'],
+                ))
             {
-                $account['role'] = 'ADMIN';
-            }
-            else
-            {
-                $account['role'] = 'USER';
+                $hashpassword = password_hash($_POST['password'], PASSWORD_ARGON2ID);
+                $account = [
+                    'firstname' => $_POST['firstname'],
+                    'email' => $_POST['email'],
+                    'lastname' => $_POST['lastname'],
+                    'username' => $_POST['username'],
+                    'password' => $hashpassword,
+                    'birthday' => $_POST['birthday'],
+                    'address' => $_POST['address'],
+                    'city' => $_POST['city'],
+                    'postal_code' => $_POST['postal_code'],
+                    'phone' => $_POST['phone'],
+                    'role' => 'ROLE_USER',
+                ];
+
+                $id = $accountManager->insert($account);
+                header('Location:/account/show/' . $id);
             }
 
             if($account['firstname'] && $account['lastname'] && $account['username'] && $account['username'])
