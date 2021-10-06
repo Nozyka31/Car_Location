@@ -1,12 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
-
-       <h1>Edit search {{ search.Car_id }}</h1>
-<form method="post">
+    <h1>Add a new search</h1>
+    <form method="post">
             <input type="hidden" value={{ search.id }} name="id">
-            <form method="post">
             <div class="d-flex row">
                 <div class="form-group col-6">
                     <label class="col-form-label" for="car_id ">Car_id : </label>
@@ -45,6 +42,5 @@
                     <input type="text" class="form-control border border-3" name="Rating" value={{ search.Rating }}>
                 </div>
             </div>
-<br>
-
+<a href="/search">back to list</a>
 {% endblock %}

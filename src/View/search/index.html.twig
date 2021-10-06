@@ -1,10 +1,8 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
-
-       <h1>Edit search {{ search.Car_id }}</h1>
-<form method="post">
+    <h1>search</h1>
+    <form method="post">
             <input type="hidden" value={{ search.id }} name="id">
             <form method="post">
             <div class="d-flex row">
@@ -46,5 +44,16 @@
                 </div>
             </div>
 <br>
-
+    
+    
+    
+        {% for search in search %}
+        <tr>
+           
+            <li><a href="/search/show/{{ search.id }}">{{ search.id }}. {{ search.firstname}}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+        
+    <a class= "btn btn-primary" href="/search/add">Add</a>
 {% endblock %}
