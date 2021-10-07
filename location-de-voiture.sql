@@ -150,7 +150,7 @@ ALTER TABLE `contract`
 -- Contraintes pour la table `messages`
 --
 ALTER TABLE `messages`
-  ADD CONSTRAINT `fk_announce_id` FOREIGN KEY (`announce_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `fk_announce_id` FOREIGN KEY (`announce_id`) REFERENCES `announce` (`id`),
   ADD CONSTRAINT `fk_receiver_message` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_sender_message` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`);
 COMMIT;
