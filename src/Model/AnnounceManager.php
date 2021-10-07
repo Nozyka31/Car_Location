@@ -26,9 +26,9 @@ class AnnounceManager extends AbstractManager
     {
         // prepared request
         $sql = "INSERT INTO " . self::TABLE .
-            "(`user_ID`, `title`, `registration_number`, `brand`, `model`, `color`, `power`, `kilometers`, `daily_price`, `picture`, `year`)
+            "(`user_ID`, `title`, `registration_number`, `brand`, `model`, `color`, `power`, `km`, `daily_price`, `picture`, `year`)
         VALUES
-        (:user_ID, :title, :registration_number, :brand, :model, :color, :power, :kilometers, :daily_price, :picture, :year)";
+        (:user_ID, :title, :registration_number, :brand, :model, :color, :power, :km, :daily_price, :picture, :year)";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(':user_ID', 1, \PDO::PARAM_INT);
         $statement->bindValue(':title', $announce['title'], \PDO::PARAM_STR);
@@ -37,7 +37,7 @@ class AnnounceManager extends AbstractManager
         $statement->bindValue(':model', $announce['model'], \PDO::PARAM_STR);
         $statement->bindValue(':color', $announce['color'], \PDO::PARAM_STR);
         $statement->bindValue(':power', $announce['power'], \PDO::PARAM_INT);
-        $statement->bindValue(':kilometers', $announce['kilometers'], \PDO::PARAM_INT);
+        $statement->bindValue(':km', $announce['km'], \PDO::PARAM_INT);
         $statement->bindValue(':daily_price', $announce['daily_price'], \PDO::PARAM_INT);
         $statement->bindValue(':picture', $announce['picture'], \PDO::PARAM_STR);
         $statement->bindValue(':year', $announce['year'], \PDO::PARAM_INT);
@@ -75,7 +75,7 @@ class AnnounceManager extends AbstractManager
         `model` = :model,
         `color` = :color,
         `power` = :power,
-        `kilometers` = :kilometers,
+        `km` = :km,
         `daily_price` = :daily_price,
         `picture` = :picture,
         `year` = :year
@@ -90,7 +90,7 @@ class AnnounceManager extends AbstractManager
         $statement->bindValue(':model', $announce['model'], \PDO::PARAM_STR);
         $statement->bindValue(':color', $announce['color'], \PDO::PARAM_STR);
         $statement->bindValue(':power', $announce['power'], \PDO::PARAM_STR);
-        $statement->bindValue(':kilometers', $announce['kilometers'], \PDO::PARAM_STR);
+        $statement->bindValue(':km', $announce['km'], \PDO::PARAM_STR);
         $statement->bindValue(':daily_price', $announce['daily_price'], \PDO::PARAM_STR);
         $statement->bindValue(':picture', $announce['picture'], \PDO::PARAM_STR);
         $statement->bindValue(':year', $announce['year'], \PDO::PARAM_STR);

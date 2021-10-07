@@ -141,7 +141,7 @@ class AnnounceController extends AbstractController
             $announce['model'] = $_POST['model'];
             $announce['color'] = $_POST['color'];
             $announce['power'] = $_POST['power'];
-            $announce['kilometers'] = $_POST['kilometers'];
+            $announce['km'] = $_POST['km'];
             $announce['daily_price'] = $_POST['daily_price'];
             if($fileOnServer)
             {
@@ -213,6 +213,7 @@ class AnnounceController extends AbstractController
                     $finalName = $cleanedName . uniqid() . '.' . $ext;
                     $destination = UPLOADFOLDER . $finalName;
                     $sucessUpload = move_uploaded_file($fileOnServer, '.' . $destination);
+                    
                     if(!$sucessUpload)
                     {
                         $message = "Fichier uploadé avec succès!";
@@ -224,6 +225,7 @@ class AnnounceController extends AbstractController
                 }
             }
 
+            
             $announceManager = new AnnounceManager();
             $announce = [
                 'title' => $_POST['title'],
@@ -232,7 +234,7 @@ class AnnounceController extends AbstractController
                 'model' => $_POST['model'],
                 'color' => $_POST['color'],
                 'power' => $_POST['power'],
-                'kilometers' => $_POST['kilometers'],
+                'km' => $_POST['km'],
                 'daily_price' => $_POST['daily_price'],
                 'picture' => $destination,
                 'year' => $_POST['year'],
