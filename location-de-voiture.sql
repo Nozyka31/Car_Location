@@ -31,19 +31,20 @@ DROP TABLE IF EXISTS `announce`;
 CREATE TABLE IF NOT EXISTS `announce` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `Title` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `Matricule` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `Marque` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `Modèle` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `Couleur` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `Puissance` int(11) DEFAULT NULL,
-  `KM` int(11) NOT NULL,
-  `Coût /jour` int(11) NOT NULL,
-  `Photo` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `Rating` float NOT NULL,
+  `title` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `registration_number` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `brand` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `model` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `color` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `power` int(11) DEFAULT NULL,
+  `km` int(11) NOT NULL,
+  `daily_price` int(11) NOT NULL,
+  `picture` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `rate` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_users_announce` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+
 
 -- --------------------------------------------------------
 
@@ -66,19 +67,19 @@ CREATE TABLE IF NOT EXISTS `cars` (
 -- Structure de la table `contract`
 --
 
-DROP TABLE IF EXISTS `contract`;
+
 CREATE TABLE IF NOT EXISTS `contract` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
+  `renter_id` int(11) NOT NULL,
   `car_id` int(11) NOT NULL,
-  `plate` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `registration_number` varchar(100) CHARACTER SET utf8 NOT NULL,
   `km_start` int(11) NOT NULL,
   `km_end` int(11) NOT NULL,
-  `date début` datetime NOT NULL,
-  `date fin prévue` datetime NOT NULL,
-  `date fin réelle` datetime NOT NULL,
-  `prix` int(11) NOT NULL,
-  `renter_id` int(11) NOT NULL,
+  `start_date` datetime NOT NULL,
+  `estimated_end` datetime NOT NULL,
+  `reel_end` datetime NOT NULL,
+  `price` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_users_contract` (`user_id`),
   KEY `fk_users_renter_contract` (`renter_id`),

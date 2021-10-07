@@ -1,5 +1,40 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1></h1>
-{% endblock %}
+
+<h1>Paiement</h1>
+
+  <h2>Données bancaires</h2>
+
+<div class="card">
+      <label for="Visa">Visa</label>
+      <input type="checkbox" value="Visa">
+      <label for="MasterCard">MasterCard</label>
+      <input type="checkbox" value="MasterCard">
+      <label for="American Express">American Express</label>
+      <input type="checkbox" value="American Express">
+      <label for="Paypal">Paypal</label>
+      <input type="checkbox" value="Paypal">
+    </div>
+
+    <div class="card">
+      <h3>Entrer les informations</h3>
+      <div>
+      <input type="hidden" {{payment.name}}>
+      <input type="text" value="Propriétaire de la carte">
+      <input type="hidden" {{payment.card_number}}>
+      <input type="text" value="Numéro de carte (composée de 16 chiffres)">
+      <input type="hidden" {{payment.expiry}}>
+      <input type="text" value="Date d'expiration">
+      <input type="hidden" {{payment.key}}>
+      <input type="text" value="Cryptogramme (3 chiffres au verso)">
+      </div>
+    </div>
+
+    <div class="card">
+      <input type="checkbox" value="Payer en cryptomonnaie">
+    </div>
+
+  <input type="submit" class="btn btn-primary mt-3 mb-3" value="Booking">
+
+  {% endblock %}

@@ -1,5 +1,39 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1></h1>
+
+  <h1>Réservation</h1>
+  <h2>Récapitulatif</h2>
+
+
+    <div class="card">
+      <h3>Voiture</h3>
+      <div>
+        <p>{{announce.brand}}{{announce.model}}</p>
+        <p>Puissance : {{announce.power}}</p>
+        <p>Matricule : {{announce.registration_number}}</p>
+        <p>Distance parcourue : {{announce.kilometers}}</p>
+        <p>Temps d'utilisation : {{announce.year}}</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Coordonnées : emplacement et contact</h3>
+      <div>
+        <p>{{account.adress}}</p>
+        <p>{{account.postal}}, {{account.city}}</p>
+        <p>Numéro de téléphone : {{account.phone}}</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Montant</h3>
+      <div>
+        <p>Cette voiture est louée du {{contract.start_date}} à {{contract.estimated_end}}</p>
+        <p>Coût par jour : {{announce.daily_price}}</p>
+        <p>Coût total : {{contract.estimated_end - contract.start_date}}</p>
+      </div>
+    </div>
+
+  <input type="submit" class="btn btn-primary mt-3 mb-3" value="Booking">
 {% endblock %}
