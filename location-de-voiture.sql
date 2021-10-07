@@ -30,7 +30,11 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `announce`;
 CREATE TABLE IF NOT EXISTS `announce` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `user_id` int(11) NOT NULL,
+=======
+  `user_id` int(11) NULL,
+>>>>>>> d73cf2c640b425e3807e1644fa4ff21c053362a2
   `title` varchar(50) CHARACTER SET utf8 NOT NULL,
   `registration_number` varchar(100) CHARACTER SET utf8 NOT NULL,
   `brand` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -40,7 +44,12 @@ CREATE TABLE IF NOT EXISTS `announce` (
   `km` int(11) NOT NULL,
   `daily_price` int(11) NOT NULL,
   `picture` varchar(50) CHARACTER SET utf8 NOT NULL,
+<<<<<<< HEAD
   `rate` float NOT NULL,
+=======
+  `year` INT NOT NULL,
+  `rate` float NULL,
+>>>>>>> d73cf2c640b425e3807e1644fa4ff21c053362a2
   PRIMARY KEY (`id`),
   KEY `fk_users_announce` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
@@ -74,8 +83,11 @@ CREATE TABLE IF NOT EXISTS `contract` (
   `renter_id` int(11) NOT NULL,
   `car_id` int(11) NOT NULL,
   `registration_number` varchar(100) CHARACTER SET utf8 NOT NULL,
+<<<<<<< HEAD
   `km_start` int(11) NOT NULL,
   `km_end` int(11) NOT NULL,
+=======
+>>>>>>> d73cf2c640b425e3807e1644fa4ff21c053362a2
   `start_date` datetime NOT NULL,
   `estimated_end` datetime NOT NULL,
   `reel_end` datetime NOT NULL,
@@ -115,18 +127,18 @@ CREATE TABLE IF NOT EXISTS `messages` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
   `firstname` varchar(50) CHARACTER SET utf8 NOT NULL,
   `lastname` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `username` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `password` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `password` varchar(250) CHARACTER SET utf8 NOT NULL,
   `role` varchar(100) CHARACTER SET utf8 NOT NULL,
   `birthday` date NOT NULL,
-  `adress` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `address` varchar(100) CHARACTER SET utf8 NOT NULL,
   `city` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
-  ` postal_code` int(11) DEFAULT NULL,
+  `postal_code` int(11) DEFAULT NULL,
   `phone` varchar(25) CHARACTER SET utf8 NOT NULL,
-  `rate` float NOT NULL,
-  `year` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `rate` float NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 

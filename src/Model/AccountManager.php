@@ -26,12 +26,13 @@ class AccountManager extends AbstractManager
     {
         // prepared request
         $sql = "INSERT INTO " . self::TABLE .
-            "(`firstname`, `lastname`, `username`, `password`, `role`, `birthday`, `address`, `city`, `postal_code`, `phone`)
+            "(`firstname`, `lastname`, `email`, `username`, `password`, `role`, `birthday`, `address`, `city`, `postal_code`, `phone`)
         VALUES
-        (:firstname, :lastname, :username, :password, :role, :birthday, :address, :city, :postal_code, :phone)";
+        (:firstname, :lastname, :email, :username, :password, :role, :birthday, :address, :city, :postal_code, :phone)";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(':firstname', $account['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $account['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':email', $account['email'], \PDO::PARAM_STR);
         $statement->bindValue(':username', $account['username'], \PDO::PARAM_STR);
         $statement->bindValue(':password', $account['password'], \PDO::PARAM_STR);
         $statement->bindValue(':role', $account['role'], \PDO::PARAM_STR);
@@ -72,6 +73,7 @@ class AccountManager extends AbstractManager
         `lastname` = :lastname,
         `username` = :username,
         `password` = :password,
+        `email` = :email,
         `role` = :role,
         `birthday` = :birthday,
         `address` = :address,
@@ -87,6 +89,7 @@ class AccountManager extends AbstractManager
         $statement->bindValue(':lastname', $account['lastname'], \PDO::PARAM_STR);
         $statement->bindValue(':username', $account['username'], \PDO::PARAM_STR);
         $statement->bindValue(':password', $account['password'], \PDO::PARAM_STR);
+        $statement->bindValue(':email', $account['email'], \PDO::PARAM_STR);
         $statement->bindValue(':role', $account['role'], \PDO::PARAM_STR);
         $statement->bindValue(':birthday', $account['birthday'], \PDO::PARAM_STR);
         $statement->bindValue(':address', $account['address'], \PDO::PARAM_STR);
@@ -99,5 +102,23 @@ class AccountManager extends AbstractManager
         }
 
         return $statement->execute();
+    }
+
+    /**
+     * Get one row from database by EMAIL.
+     *
+     * @param  string $email
+     *
+     * @return array
+     */
+    public function selectOneByEmail(string $email)
+    {
+        // prepared request
+        $sql = "SELECT * FROM `$this->table` WHERE 'email'=:email";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(':email', $email, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }
