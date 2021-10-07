@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Model\SearchManager;
 
 /**
- * Class rechercheController
+ * Class search Controller
  *
  */
 class SearchController extends AbstractController
@@ -13,7 +13,7 @@ class SearchController extends AbstractController
 
 
     /**
-     * Displayrecherche listing
+     * Display search listing
      *
      * @return string
      * @throws \Twig\Error\LoaderError
@@ -30,7 +30,7 @@ class SearchController extends AbstractController
 
 
     /**
-     * Display recherche informations specified by $id
+     * Display search  informations specified by $id
      *
      * @param int $id
      * @return string
@@ -43,12 +43,12 @@ class SearchController extends AbstractController
         $searchManager = new SearchManager();
         $search = $searchManager->selectOneById($id);
 
-        return $this->twig->render('Search/show.html.twig', ['recherche' => $search]);
+        return $this->twig->render('Search/show.html.twig', ['search' => $search]);
     }
 
 
     /**
-     * Display recherche edition page specified by $id
+     * Display search  edition page specified by $id
      *
      * @param int $id
      * @return string
@@ -71,7 +71,7 @@ class SearchController extends AbstractController
 
 
     /**
-     * Display recherchecreation page
+     * Display search creation page
      *
      * @return string
      * @throws \Twig\Error\LoaderError
@@ -95,7 +95,7 @@ class SearchController extends AbstractController
 
 
     /**
-     * Handle recherche deletion
+     * Handle search  deletion
      *
      * @param int $id
      */
