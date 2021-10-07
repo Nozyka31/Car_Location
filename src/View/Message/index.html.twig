@@ -1,5 +1,42 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Chat here !</h1>
+    <h1 class="mb-5">Hey there ! Here you can get chatting</h1>
+    
+    <div class="d-flex flex-row mt-5">
+    
+    <div class="d-flex flex-column mb-4">
+    <h2>Chat</h2>
+    <div class="d-flex flex-column">
+    <textarea cols ="115" rows="20"></textarea>
+    <div class="d-flex flex-row">
+    <input type="text" placeholder="Ecrire un message ici" size="110">
+    <button class="btn btn-primary">Envoyer</button>
+    </div>
+    </div>
+    </div>
+
+    <div class="d-flex flex-column ms-3">
+    <h2>Annonce</h2>
+    <div class="card d-flex flex-column">
+    <div class="card py-5">
+        <img src="{{ announce.picture }}" class="announce py-5" alt="Image du véhicule non disponible">
+    </div>
+    <pre></pre>
+    <div>
+    <p>Marque et modèle : {{ announce.brand }}{{ announce.model }}</p>
+    <p>Matricule : {{announce.registration_number}}</p>
+    <p>Puissance : {{announce.power}}</p>
+    <p>Couleur : {{ announce.color}}</p>
+    <p>Emplacement :{{account.adress}}{{account.city}}</p>
+    <p>Coût par jour : {{ announce.daily_price }}</p>
+    </div>
+    </div>
+    <div class="px-5">
+    <input type="submit" class="btn btn-primary px-5" value="Louer">
+    </div>
+    </div>
+    </div>
+    
+    
 {% endblock %}

@@ -2,23 +2,28 @@
 
 {% block content %}
 
-<h1>Paiement</h1>
+<h1>Réservation</h1>
 
-  <h2>Données bancaires</h2>
+  <h2>Paiement</h2>
 
+<div class="d-flex flex-row">
 <div class="card">
+<h3>Données bancaires</h3>
       <label for="Visa">Visa</label>
-      <input type="checkbox" value="Visa">
+      <input type="range" value="Visa">
       <label for="MasterCard">MasterCard</label>
-      <input type="checkbox" value="MasterCard">
+      <input type="range" value="MasterCard">
       <label for="American Express">American Express</label>
-      <input type="checkbox" value="American Express">
+      <input type="range" value="American Express">
       <label for="Paypal">Paypal</label>
-      <input type="checkbox" value="Paypal">
+      <input type="range" value="Paypal">
+      <div class="card">
+      <input type="checkbox" value="Payer en cryptomonnaie">
+    </div>
     </div>
 
     <div class="card">
-      <h3>Entrer les informations</h3>
+      <h3>Informations confidentielles</h3>
       <div>
       <input type="hidden" {{payment.name}}>
       <input type="text" value="Propriétaire de la carte">
@@ -30,11 +35,9 @@
       <input type="text" value="Cryptogramme (3 chiffres au verso)">
       </div>
     </div>
-
-    <div class="card">
-      <input type="checkbox" value="Payer en cryptomonnaie">
-    </div>
+</div>
 
   <input type="submit" class="btn btn-primary mt-3 mb-3" value="Booking">
+  <button class="btn btn-primary mt-3 mb-3">Cancel</button>
 
   {% endblock %}
