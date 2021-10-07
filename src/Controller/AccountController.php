@@ -151,12 +151,6 @@ class AccountController extends AbstractController
                 $id = $accountManager->insert($account);
                 header('Location:/account/show/' . $id);
             }
-
-            if($account['firstname'] && $account['lastname'] && $account['username'] && $account['username'])
-                {
-                    $id = $accountManager->insert($account);
-                    header('Location:/account/show/' . $id);
-                }
         }
 
         return $this->twig->render('Account/add.html.twig');
