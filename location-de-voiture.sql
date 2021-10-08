@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `announce` (
   `city` varchar(50) CHARACTER SET utf8 NOT NULL,
   `km` int(11) NOT NULL,
   `daily_price` int(11) NOT NULL,
-  `picture` varchar(50) CHARACTER SET utf8 NULL,
+  `picture` varchar(350) CHARACTER SET utf8 NULL,
   `year` INT NOT NULL,
   `rate` float NULL,
   PRIMARY KEY (`id`),

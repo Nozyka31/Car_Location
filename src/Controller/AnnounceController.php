@@ -172,9 +172,7 @@ class AnnounceController extends AbstractController
      */
     public function add()
     {
-        $userID=$_SESSION['user']['id'];
-        var_dump($userID);
-        die;
+        $userID=1;//$_SESSION['user']['id'];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $errorMessage = false;
