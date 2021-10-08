@@ -1,23 +1,23 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Login {{ Login.title }}</h1>
-<form method="POST" action="User/checkLogin">
-  <div class="mb-3 w-50 ">
-    <label for="Email" class="form-label  ">Email address*</label>
-    <input type="email" class="form-control border border-secondary" id="Email" aria-describedby="emailHelp">
+    <h1>Login</h1>
+<form method="post" >
+  <div class="form-group mb-3 w-50 ">
+    <label for="email" class="form-label  ">Email address*</label>
+    <input type="email" class="form-control border border-secondary" id="Email" name="email" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
-  <div class="mb-3 w-25">
+    <div class="form-group mb-3 w-25">
     <label for="password" class="form-label">Password*</label>
-    <input type="password" class="form-control border border-secondary" id="Password">
+    <input type="password" class="form-control border border-secondary" name="password" id="Password">
   </div>
-  <div class="mb-3 form-check">
+  {#<div class="form-group mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
+  </div>#}
   <button type="submit" class="btn btn-primary">Envoyer</button>
-          <a href="/user/logout" class="btn btn-warning">Déconnexion</a>
+  <a href="/user/logout" class="btn btn-warning">Déconnexion</a>
 </form>
     <a href="/account">Back to list</a>
 {% endblock %}

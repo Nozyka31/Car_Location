@@ -81,40 +81,41 @@ class UserController extends AbstractController
      */
     public function login()
     {
-
+        /*var_dump($_POST);
+        die;*/
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $accountManager = new AccountManager();
-            $user = $accountManager->selectOneById($_POST["id"]);
-            if ($user && isset($user["password"])) {
-                $connect = password_verify($_POST["password"],
-                $user["password"]);
             
-            }else{
+            $accountManager = new AccountManager();
+            $user = $accountManager->selectOneByEmail($_POST["email"]);
+            if ($user && isset($user["password"])) 
+            {
+                $connect = password_verify($_POST["password"], $user["password"]);
+            }
+            else
+            {
                 $connect=false;
-                } 
+            } 
             
             if (!$connect){
                 $errorMessage = "problem with your e-mail or password";
+                var_dump($errorMessage);
+                die;
                    
             } else{
+
                     $_SESSION["user"] = [
                         "id" => $user["id"],
-                        "name" => $user["name"],
-                        "firstName" => $user["first_name"],
+                        "firstname" => $user["firstname"],
+                        "lastname" => $user["lastname"],
                         "email" => $user["email"],
                         "phone" => $user["phone"],
                         "role" => $user["role"],
                     ];
-
-                        header('Location:/');
-                 $user = [
-                'title' => $_POST['title'],
-            ];
-            $id = $accountManager->insert($user);
-            header('Location:/user/show/' . $id);
+                    
+            header('Location:/');
         }
     }
-        return $this->twig->render('User/login.html.twig');
+        return $this->twig->render('user/login.html.twig');
     }
 
  /**

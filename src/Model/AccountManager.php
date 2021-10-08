@@ -24,6 +24,8 @@ class AccountManager extends AbstractManager
      */
     public function insert(array $account): int
     {
+        
+
         // prepared request
         $sql = "INSERT INTO " . self::TABLE .
             "(`firstname`, `lastname`, `email`, `username`, `password`, `role`, `birthday`, `address`, `city`, `postal_code`, `phone`)
@@ -114,9 +116,9 @@ class AccountManager extends AbstractManager
     public function selectOneByEmail(string $email)
     {
         // prepared request
-        $sql = "SELECT * FROM `$this->table` WHERE 'email'=:email";
+        $sql = "SELECT * FROM `$this->table` WHERE `email`=:email";
         $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(':email', $email, \PDO::PARAM_INT);
+        $statement->bindValue(':email', $email, \PDO::PARAM_STR);
         $statement->execute();
 
         return $statement->fetch();

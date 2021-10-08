@@ -1,13 +1,15 @@
+{# 
 {% if(session.role) == 'ADMIN' %} 
     <h2>Bienvenue sur la page admin</h2>
 {% endif %} 
-
+#}
 
 
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Accounts</h1>
+    <h1>Account management</h1>
+    <h2>Admin</h2>
 
     <table class="table table-striped">
 <thead>

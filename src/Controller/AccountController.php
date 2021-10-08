@@ -65,6 +65,10 @@ class AccountController extends AbstractController
      */
     public function edit(int $id): string
     {
+        /*if (!isset($_SESSION["user"]) || $id == 0) {
+            header("location: /");
+        }
+*/
         $accountManager = new AccountManager();
         $account = $accountManager->selectOneById($id);
 
@@ -119,8 +123,7 @@ class AccountController extends AbstractController
             $accountManager = new AccountManager();
 
             $alreadyUsed = $accountManager->selectOneByEmail($_POST['email']);
-            
-            if(!$alreadyUsed && isset(
+            if(isset(
                 $_POST["password"],
                 $_POST['firstname'],
                 $_POST['lastname'],
@@ -133,6 +136,7 @@ class AccountController extends AbstractController
                 $_POST['phone'],
                 ))
             {
+                
                 $hashpassword = password_hash($_POST['password'], PASSWORD_ARGON2ID);
                 $account = [
                     'firstname' => $_POST['firstname'],
@@ -147,7 +151,7 @@ class AccountController extends AbstractController
                     'phone' => $_POST['phone'],
                     'role' => 'ROLE_USER',
                 ];
-
+                
                 $id = $accountManager->insert($account);
                 header('Location:/account/show/' . $id);
             }
