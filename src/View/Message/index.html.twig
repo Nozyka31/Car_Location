@@ -1,45 +1,52 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1 class="mb-5">Hey there ! Here you can get chatting</h1>
-    
-    <div class="d-flex flex-row flex-wrap mt-5">
-    
-    <div class="d-flex flex-column mb-4 col-9 ">
-    <h2>Chat</h2>
-    <div class="d-flex flex-column">
-    <div class="form-floating">
-  <textarea  class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-  <label for="floatingTextarea">Comments</label>
-</div>
-    <div class="d-flex flex-row">
-    <input type="text" placeholder="Ecrire un message ici" size="40">
-    <button class="btn btn-primary">Envoyer</button>
+    <h1>Chat here !</h1>
+    <div id="message_page">
+        <div id="message_div">
+            <div id="message_list">
+                <div class="message_preview">
+                    <h3>NOM Prénom</h3>
+                    <h5>Nom de l'annonce</h5>
+                    <div class="d-flex flex-row space-content-between">
+                        <p>Dernier message envoyé</p>
+                        <p>16:05</p>
+                    </div>
+                </div>
+            </div>
+            <div id="message_container">
+                <form method="POST" id="message_box">
+                    <div class="d-flex flex-column">
+                        <div>
+                            <p class="message_me">Blalblabla</p>
+                        </div>
+                        <div>
+                            <p class="message_him">Blalblabla</p>
+                        </div>
+                        <div>
+                            <p class="message_me">Blalblabla</p>
+                        </div>
+                        <div>
+                            <p class="message_me">Blalblabla</p>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex flex-row">
+                        <label class="col-form-label" for="message"></label>
+                        <input type="text" class="form-control border border-3" name="message" placeholder="Your message here."><button class="btn btn-warning ms-2">POST</button>
+                    </div>
+                </form>
+            </div> 
+        </div>
+        <div id="message_info">
+                <div id="message_user">
+                    <h3>NOM Prénom</h3>
+                    <p class="btn btn-primary" href="#">Profile</p>
+                </div>
+                <div id="message_announce">
+                    <h3> </h3>
+                    <h3>Nom de l'annonce</h3>
+                    <p class="btn btn-primary" href="#">Announce</p>
+                </div>
+            </div>
     </div>
-    </div>
-    </div>
-
-    <div class="d-flex flex-column">
-    <h2>Annonce</h2>
-    <div class="card d-flex flex-column">
-    <div class="card py-5">
-        <img src="{{ announce.picture }}" class="announce py-5" alt="Image du véhicule non disponible">
-    </div>
-    <pre></pre>
-    <div>
-    <p>Marque et modèle : {{ announce.brand }}{{ announce.model }}</p>
-    <p>Matricule : {{announce.registration_number}}</p>
-    <p>Puissance : {{announce.power}}</p>
-    <p>Couleur : {{ announce.color}}</p>
-    <p>Emplacement :{{account.adress}}{{account.city}}</p>
-    <p>Coût par jour : {{ announce.daily_price }}</p>
-    </div>
-    </div>
-    <div class="p-2 d-flex justify-content-center">
-    <input type="submit" class="btn btn-primary px-5" value="Louer">
-    </div>
-    </div>
-    </div>
-    
-    
 {% endblock %}

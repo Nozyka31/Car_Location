@@ -7,7 +7,7 @@ class SearchManager extends AbstractManager
     /**
      *
      */
-    const TABLE = 'search';
+    const TABLE = 'announce';-
 
     /**
      *  Initializes this class.
@@ -17,47 +17,34 @@ class SearchManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
     /**
-     * @param array $search
-     * @return int
+     * Get one row from database by ID.
+     *
+     * @param  int $id
+     *
+     * @return array
      */
-    public function insert(array $search): int
+    public function selectAllAnnouncesById(int $id)
     {
         // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`firstname`) VALUES (:firstname)");
-        $statement->bindValue('firstname', $search['firstname'], \PDO::PARAM_STR);
+        $sql = "SELECT * FROM announce ORDER BY id DESC";
+        $sql = 'SELECT city FROM announce WHERE city LIKE "%'.recherche.'%" ORDER BY id DESC';
 
-        if ($statement->execute()) {
-            return (int)$this->pdo->lastInsertId();
-        }
+        return $this->pdo->query($sql)->fetchAll();
     }
 
-
     /**
-     * @param int $id
+     * Get one row from database by ID.
+     *
+     * @param  int $id
+     *
+     * @return array
      */
-    public function delete(int $id): void
+    public function search(int $recherche)
     {
         // prepared request
-        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
-    }
+        $sql = 'SELECT city FROM announce WHERE city LIKE "%'.$recherche.'%" ORDER BY id DESC';
 
-
-    /**
-     * @param array $search
-     * @return bool
-     */
-    public function update(array $search): bool
-    {
-
-        // prepared request
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `firstname` = :firstname WHERE id=:id");
-        $statement->bindValue('id', $search['id'], \PDO::PARAM_INT);
-        $statement->bindValue('firstname', $search['firstname'], \PDO::PARAM_STR);
-
-        return $statement->execute();
+        return $this->pdo->query($sql)->fetchAll();
     }
 }

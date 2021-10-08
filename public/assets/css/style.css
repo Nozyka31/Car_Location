@@ -18,3 +18,84 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+#message_div{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+}
+
+#message_list{
+    width: 15vw;
+    height: 90vh;
+    background-color: rgb(85, 93, 206);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#message_info{
+    width: 15vw;
+}
+
+#message_container{
+    width: 50vw;
+    height: 90vh;
+    background-color: rgb(164, 193, 202);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#message_box{
+    width: 95%;
+    margin-bottom: 2.5vh;
+}
+
+.message_preview{
+    background-color: cadetblue;
+    width: 95%;
+    margin-top: 2.5%;
+}
+
+#message_page{
+    margin-left: -10%;
+    margin-right: -10%;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+}
+
+#message_user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: chartreuse;
+    height: 20vh;
+}
+
+#message_announce{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 0, 234);
+    height: 70vh;
+}
+
+.message_me{
+    text-align: end;
+    color: white;
+    background-color: blue;
+    border-radius: 50px;
+    padding: 1%;
+}
+
+.message_him{
+    text-align: start;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 1%;
+}

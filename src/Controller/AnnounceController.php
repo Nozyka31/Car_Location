@@ -141,6 +141,7 @@ class AnnounceController extends AbstractController
             $announce['model'] = $_POST['model'];
             $announce['color'] = $_POST['color'];
             $announce['power'] = $_POST['power'];
+            $announce['city'] = $_POST['city'];
             $announce['km'] = $_POST['km'];
             $announce['daily_price'] = $_POST['daily_price'];
             if($fileOnServer)
@@ -171,6 +172,9 @@ class AnnounceController extends AbstractController
      */
     public function add()
     {
+        $userID=$_SESSION['user']['id'];
+        var_dump($userID);
+        die;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $errorMessage = false;
@@ -226,14 +230,17 @@ class AnnounceController extends AbstractController
             }
 
             
+
             $announceManager = new AnnounceManager();
             $announce = [
+                'user_id' => $userID,
                 'title' => $_POST['title'],
                 'registration_number' => $_POST['registration_number'],
                 'brand' => $_POST['brand'],
                 'model' => $_POST['model'],
                 'color' => $_POST['color'],
                 'power' => $_POST['power'],
+                'city' => $_POST['city'],
                 'km' => $_POST['km'],
                 'daily_price' => $_POST['daily_price'],
                 'picture' => $destination,
