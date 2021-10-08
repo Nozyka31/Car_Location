@@ -1,44 +1,73 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid d-flex flex-row space-content-between">
     <div></div>
-    <a class="navbar-brand btn btn-dark d-lg-none d-block" href="/">LOC-AUTO</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="d-lg-none d-block">
+          <a class="navbar-brand btn btn-dark" href="/">LOC-AUTO</a>
+          <img src="../../assets/images/icones/IMG_0991.PNG" alt="car" width="90rem">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
  <div class="collapse navbar-collapse" id="navbarColor01">
  <ul class="navbar-nav me-auto d-flex flex-lg-row flex-column" id="navbar">
       <div class="d-flex flex-lg-row flex-column">
           <li class="nav-item active">
+          <div class="d-flex flex-row">
             <a class="nav-link" href="/announce/add">Louer mon véhicule
               <span class="visually-hidden">(current)</span>
+              <img src="../../assets/images/icones/vitesse1.PNG" alt="dollar" width="50rem">
             </a>
+            </div>
           </li>
           <li class="nav-item active">
+          <div class="d-flex flex-row">
             <a class="nav-link" href="/message">Chat
               <span class="visually-hidden">(current)</span>
+             <img src="../../assets/images/icones/klaxon.PNG" alt="dollar" width="50rem">
             </a>
+            </div>
+          </li>
+          
+          <li class="nav-item active">
+          <div class="d-flex flex-row">
+            <a class="nav-link" href="/booking/index">Booking
+              <span class="visually-hidden">(current)</span>
+            <img src="../../assets/images/icones/paiement.PNG" alt="dollar" width="35rem">
+            </a>
+          </div>
           </li>
         </div>
-        
         <li class="nav-item lg active">
-          <a class="navbar-brand btn btn-dark d-none d-lg-block" href="/">LOC-AUTO</a>
+
+        <div class="d-none d-lg-block">
+          <a class="navbar-brand btn btn-dark" href="/">LOC-AUTO</a>
+          <a class="navbar-brand" href="/"><img src="../../assets/images/icones/IMG_0991.PNG" alt="dollar" width="90rem"></a>
+        </div>
         </li>
         <div class="d-flex flex-lg-row flex-column">
           <li class="nav-item active">
-            <a class="nav-link" href="/account/add">Inscription
+          <div class="d-flex flex-row">
+            <a class="nav-link" href="/account/add">Inscription    
               <span class="visually-hidden">(current)</span>
+              <img src="../../assets/images/icones/feuRouge.PNG" alt="dollar" width="40rem">
             </a>
+            </div>
           </li>
+          <div class=" d-flex flex-row">
           <li class="nav-item active">
+
           {% if(session.user) %}
             <a class="nav-link" href="/user/logout">Deconnexion
         <span class="visually-hidden">(current)</span>
+        <img src="../../assets/images/icones/roueOnOff.PNG" alt="car" width="50rem" class="mx-3">
               </a>
              {% else %}
              <a class="nav-link" href="/user/login">Connexion
         <span class="visually-hidden">(current)</span>
+        <img src="../../assets/images/icones/roueOnOff.PNG" alt="car" width="50rem" class="mx-3">
               </a>
                {% endif %}
+
           </li>
         </div>
     </div>
