@@ -107,31 +107,34 @@ class UserController extends AbstractController
                     ];
 
                         header('Location:/');
-                
-                
-            
-            
-            
-            $user = [
+                 $user = [
                 'title' => $_POST['title'],
             ];
             $id = $accountManager->insert($user);
             header('Location:/user/show/' . $id);
         }
     }
-        return $this->twig->render('User/add.html.twig');
+        return $this->twig->render('User/login.html.twig');
     }
 
-
-    /**
-     * Handle user deletion
+ /**
+     * Display user logout page
      *
-     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
-    public function delete(int $id)
-    {
-        $accountManager = new AccountManager();
-        $accountManager->delete($id);
-        header('Location:/user/index');
+    public function logout()
+    {  
+        unset($_SESSION["user"]);
+        header("Location: /");
+        exit;
     }
+
+    public function checkLogin()
+    {
+        header("Location: /");  
+    }
+
 }
