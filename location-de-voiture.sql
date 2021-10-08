@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+ -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
@@ -6,29 +6,29 @@
 -- Généré le : mer. 06 oct. 2021 à 10:25
 -- Version du serveur :  5.7.33
 -- Version de PHP : 7.3.21
-
+ 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
+ 
+ 
 DROP TABLE IF EXISTS `contract`;
 DROP TABLE IF EXISTS `messages`;
 DROP TABLE IF EXISTS `announce`;
 DROP TABLE IF EXISTS `cars`;
 DROP TABLE IF EXISTS `users`;
-
+ 
 --
 -- Base de données : `location-de-voiture`
 --
-
-
+ 
+ 
 -- --------------------------------------------------------
-
+ 
 --
 -- Structure de la table `users`
 --
-
+ 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
@@ -45,13 +45,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `rate` float NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
+ 
 -- --------------------------------------------------------
-
+ 
 --
 -- Structure de la table `cars`
 --
-
+ 
 CREATE TABLE IF NOT EXISTS `cars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `brand` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -59,13 +59,13 @@ CREATE TABLE IF NOT EXISTS `cars` (
   `power` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
+ 
 -- --------------------------------------------------------
-
+ 
 --
 -- Structure de la table `announce`
 --
-
+ 
 CREATE TABLE IF NOT EXISTS `announce` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NULL,
@@ -84,13 +84,13 @@ CREATE TABLE IF NOT EXISTS `announce` (
   PRIMARY KEY (`id`),
   KEY `fk_users_announce` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
+ 
 -- --------------------------------------------------------
-
+ 
 --
 -- Structure de la table `messages`
 --
-
+ 
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sender_id` int(11) NOT NULL,
@@ -103,13 +103,13 @@ CREATE TABLE IF NOT EXISTS `messages` (
   KEY `fk_receiver_message` (`receiver_id`),
   KEY `fk_announce_id` (`announce_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
+ 
 -- --------------------------------------------------------
-
+ 
 --
 -- Structure de la table `contract`
 --
-
+ 
 CREATE TABLE IF NOT EXISTS `contract` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -125,18 +125,18 @@ CREATE TABLE IF NOT EXISTS `contract` (
   KEY `fk_users_renter_contract` (`renter_id`),
   KEY `fk_cars_contract` (`car_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
-
+ 
+ 
 --
 -- Contraintes pour les tables déchargées
 --
-
+ 
 --
 -- Contraintes pour la table `announce`
 --
 ALTER TABLE `announce`
   ADD CONSTRAINT `fk_users_announce` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
+ 
 --
 -- Contraintes pour la table `contract`
 --
@@ -144,7 +144,7 @@ ALTER TABLE `contract`
   ADD CONSTRAINT `fk_cars_contract` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`),
   ADD CONSTRAINT `fk_users_contract` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_users_renter_contract` FOREIGN KEY (`renter_id`) REFERENCES `users` (`id`);
-
+ 
 --
 -- Contraintes pour la table `messages`
 --
@@ -153,7 +153,7 @@ ALTER TABLE `messages`
   ADD CONSTRAINT `fk_receiver_message` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_sender_message` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`);
 COMMIT;
-
+ 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
@@ -170,12 +170,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `rate` float NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
+ 
 INSERT INTO `users` (`id`, `email`, `firstname`, `lastname`, `username`, `password`, `role`, `birthday`, `address`, `city`, `postal_code`, `phone`, `rate`)
 /*Pour le prix : prix d'origine */
 VALUES
   ('1', 'yoyo@gmail.com', 'Yoan', 'VolksWagen', 'Polo', '$argon2id$v=19$m=65536,t=4,p=1$LjRtZTBWSkFyOWguZno5Rw$XUjHTww6IYGb8r6PmaOA/4AuCxE1KSNIAH2FcOhCuXY', 'USER', '11/03/1965', '11 boulevard Niel', 'Muret', '31600', '0561561147', '4.5');
-
+ 
 INSERT INTO `announce` (`id`, `user_id`, `title`, `registration_number`, `brand`, `model`, `color`, `power`, `city`, `km`, `daily_price`, `picture`, `year`, `rate`)
 /*Pour le prix : prix d'origine */
 VALUES

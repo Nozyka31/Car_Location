@@ -1,0 +1,112 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+  <h1>Réservation</h1><pre></pre>
+  <div class="d-flex flex-row">
+  <h2>Récapitulatif</h2>
+  <img src="../../../assets/images/icones/feuOrange.PNG" width="30rem">
+  </div>
+  <pre></pre>
+
+<div class="d-flex flex-lg-row justify-content-around p-3">
+  <div class="pe-5">
+    <div class="card p-3 pe-5">
+      <h3>Voiture</h3>
+      <div class="p-3 pe-5">
+        <p class="pt-4 pe-5">{{announce.brand}}{{announce.model}}(marque et modèle)</p>
+        <p class="pt-4 pe-5">Puissance : {{announce.power}}</p>
+        <p class="pt-4 pe-5">Matricule : {{announce.registration_number}}</p>
+        <p class="pt-4 pe-5">Distance parcourue : {{announce.kilometers}}</p>
+        <p class="pt-4 pe-5">Temps d'utilisation : {{announce.year}}</p>
+      </div>
+    </div>
+    <pre>
+    </pre>
+  </div>
+
+  <div>
+
+    <div class="card p-3">
+     <h3>Coordonnées : emplacement et contact</h3>
+     <div>
+        <p>Localisation : {{account.adress}}(adresse)</p>
+        <p>{{account.postal}}(ZIP), {{account.city}}(ville)</p>
+        <p>Numéro de téléphone : {{account.phone}}</p>
+      </div>
+    </div>
+    <pre>
+    </pre>
+
+    <div class="card p-3">
+      <h3>Montant</h3>
+      <div>
+        <p>Cette voiture est louée du {{contract.start_date}} à {{contract.estimated_end}}</p>
+        <p>Coût par jour : {{announce.daily_price}}</p>
+        <p>Coût total : {{(contract.estimated_end - contract.start_date)*(announce.daily_price)}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+    <pre>
+    </pre>
+
+<div class="d-flex flex-row">
+ <h2>Paiement</h2>
+ <img src="../../../assets/images/icones/feuVert.PNG" width="30rem">
+ </div>
+<pre>
+</pre>
+<div class="d-flex flex-row justify-content-around mx-5">
+<div class="card col-5">
+<h3 class="p-3">Données bancaires</h3>
+<div class="d-flex flex-column flex-wrap pe-3">
+      <div class="d-flex flex-row px-2 input-group mb-3">
+      <input type="radio" value="Visa">
+      <label for="Visa">Visa</label>
+      </div>
+      <div class="d-flex flex-row px-2 input-group mb-3">
+      <input type="radio" value="MasterCard">
+      <label for="MasterCard">MasterCard</label>
+      </div>
+      <div class="d-flex flex-row px-2 input-group mb-3">
+      <input type="radio" value="American Express">
+       <label for="American Express">American Express</label>
+      </div>
+      <div class="d-flex flex-row px-2 input-group mb-3">
+      <input type="radio" value="Paypal">
+      <label for="Paypal">Paypal</label>
+      </div>
+      <br>
+      <div class"d-flex flex-row input-group mb-3">
+      <input type="checkbox" value="Bitcoin">
+      <label for="Cryptomonnaie">Payer en cryptomonnaie</label>
+      </div>
+    </div>
+    </div>
+    <pre>
+    </pre>
+
+    <div class="card p-3">
+      <h3>Informations confidentielles</h3>
+      <div>
+      <input type="hidden" {{payment.name}}>
+      <label for="Propriétaire">Propriétaire de la carte</label>
+      <input type="text"><br>
+      <input type="hidden" {{payment.card_number}}>
+      <label for="Numéro">Numéro de carte (16 chiffres)</label>
+      <input type="text"><br>
+      <input type="hidden" {{payment.expiry}}>
+      <label for="Date d'expiration">Date d'expiration</label>
+      <input type="text"><br>
+      <input type="hidden" {{payment.key}}>
+      <label for="Crypto">Cryptogramme (3 chiffres au verso)</label>
+      <input type="text"><br>
+      </div>
+    </div>
+    </div>
+
+  <input type="submit" class="btn btn-primary mt-3 mb-3" value="Booking">
+  <button class="btn btn-primary mt-3 mb-3">Cancel</button>
+ {% endblock %}
