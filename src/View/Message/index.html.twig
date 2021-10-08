@@ -2,4 +2,51 @@
 
 {% block content %}
     <h1>Chat here !</h1>
+    <div id="message_page">
+        <div id="message_div">
+            <div id="message_list">
+                <div class="message_preview">
+                    <h3>NOM Prénom</h3>
+                    <h5>Nom de l'annonce</h5>
+                    <div class="d-flex flex-row space-content-between">
+                        <p>Dernier message envoyé</p>
+                        <p>16:05</p>
+                    </div>
+                </div>
+            </div>
+            <div id="message_container">
+                <form method="POST" id="message_box">
+                    <div class="d-flex flex-column">
+                        <div>
+                            <p class="message_me">Blalblabla</p>
+                        </div>
+                        <div>
+                            <p class="message_him">Blalblabla</p>
+                        </div>
+                        <div>
+                            <p class="message_me">Blalblabla</p>
+                        </div>
+                        <div>
+                            <p class="message_me">Blalblabla</p>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex flex-row">
+                        <label class="col-form-label" for="message"></label>
+                        <input type="text" class="form-control border border-3" name="message" placeholder="Your message here."><button class="btn btn-warning ms-2">POST</button>
+                    </div>
+                </form>
+            </div> 
+        </div>
+        <div id="message_info">
+                <div id="message_user">
+                    <h3>NOM Prénom</h3>
+                    <p class="btn btn-primary" href="#">Profile</p>
+                </div>
+                <div id="message_announce">
+                    <h3> </h3>
+                    <h3>Nom de l'annonce</h3>
+                    <p class="btn btn-primary" href="#">Announce</p>
+                </div>
+            </div>
+    </div>
 {% endblock %}
