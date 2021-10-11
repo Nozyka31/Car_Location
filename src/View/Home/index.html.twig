@@ -1,12 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div>
-    <h1 class="d-flex justify-content-center mt-4">Edit search {{ search.Car_id }}</h1>
-    <form method="GET" action="/announce">
-        <div class="d-flex justify-content-center mt-4">
-        <input type="search" name="s" placeholder="Search a city">
-        <input type="submit" name="Envoyer">
+    <h1>Look if we have cars to rent in your city !</h1>
+    <form method="post" action="/announce/search">
+        <div>
+        <input type="search" name="search" placeholder="Search a city">
+        <input type="submit">
         </div>
     </form>
     </div>
