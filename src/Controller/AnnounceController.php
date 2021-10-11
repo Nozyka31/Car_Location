@@ -24,7 +24,6 @@ class AnnounceController extends AbstractController
     {
         $announceManager = new AnnounceManager();
         $announces = $announceManager->selectAll();
-
         return $this->twig->render('Announce/index.html.twig', [
             'announces' => $announces,
         ]);
@@ -266,5 +265,22 @@ class AnnounceController extends AbstractController
         $announceManager = new AnnounceManager();
         $announceManager->delete($id);
         header('Location:/announce/index');
+    }
+
+    public function search()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $announceManager = new AnnounceManager();
+            $allAnnounces = $announceManager->selectAll();
+            $searchedAnnouces = $announceManager->search($_POST['search'], $allAnnounces);
+
+
+            if($searchedAnnouces != NULL)
+            {
+                return $this->twig->render('Announce/index.html.twig', [
+                    'announces' => $searchedAnnouces,
+                ]);
+            }
+        }
     }
 }

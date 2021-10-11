@@ -105,4 +105,18 @@ class AnnounceManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function search(string $search, array $announces):array
+    {
+        $indexAnnounces = array();
+        foreach ($announces as $announce)
+        {
+            if($search == $announce['city'])
+            {
+                array_push($indexAnnounces, $announce);
+            }
+        }
+
+        return $indexAnnounces;
+    }
 }

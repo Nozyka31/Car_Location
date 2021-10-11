@@ -4,10 +4,10 @@
 
 
     <h1>Edit search {{ search.Car_id }}</h1>
-    <form method="GET" action="/announce">
+    <form method="post" action="/announce/search">
         <div>
-        <input type="search" name="s" placeholder="Search a city">
-        <input type="submit" name="Envoyer">
+        <input type="search" name="search" placeholder="Search a city">
+        <input type="submit">
         </div>
     </form>
             
