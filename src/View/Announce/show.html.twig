@@ -13,8 +13,12 @@
     <div>
         <img src="{{ announce.picture }}" class="announce" alt="...">
     </div>
-    <a href="/announce/edit/{{ announce.id }}">Edit</a>
-    <a href="/announce/delete/{{announce.id}}">Delete</a>
+    
+{% if(session.role == 'ADMIN') or (session.id == announce.user_id) %}
+    <a class="btn btn-warning" href="/announce/edit/{{ announce.id }}">Edit</a>
+    <a class="btn btn-danger" href="/announce/delete/{{announce.id}}">Delete</a>
+{% endif %}
+    <a class="btn btn-success" href="/booking/show/{{announce.id}}">Book this car</a>
     <br>
-    <a href="/announce">Back to list</a>
+    <a class="btn btn-dark" href="/announce">Back to list</a>
 {% endblock %}

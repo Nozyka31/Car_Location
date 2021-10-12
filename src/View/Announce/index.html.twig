@@ -1,9 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+{% if(session.role == 'ADMIN') %}
+    <h1>Admin Announces</h1>
+{% else %}
     <h1>Announces</h1>
+{% endif %}
+
     <p>Here are the results for your research.</p>
-        {{dump(announces)}}
         {% for announce in announces %}
             <a href="/announce/show/{{announce.id}}" class="announce">
                 <div class="card border-secondary mb-3">

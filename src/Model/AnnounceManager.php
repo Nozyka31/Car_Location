@@ -119,4 +119,13 @@ class AnnounceManager extends AbstractManager
 
         return $indexAnnounces;
     }
+
+    public function changePrice(int $total_price, int $daily_price)
+    {
+
+        $total_price += $daily_price;
+
+        return $total_price;
+    }
+    
 }
