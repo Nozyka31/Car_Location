@@ -24,9 +24,17 @@ class AnnounceController extends AbstractController
     {
         $announceManager = new AnnounceManager();
         $announces = $announceManager->selectAll();
-        return $this->twig->render('Announce/index.html.twig', [
-            'announces' => $announces,
-        ]);
+
+        if($_SESSION['user']['role'] == "ADMIN")
+        {
+            return $this->twig->render('Announce/index.html.twig', [
+                'announces' => $announces,
+            ]);
+        }
+        else
+        {
+            return $this->twig->render('/');
+        }
     }
 
 
@@ -171,7 +179,7 @@ class AnnounceController extends AbstractController
      */
     public function add()
     {
-        $userID=1;//$_SESSION['user']['id'];
+        $userID=$_SESSION['user']['id'];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $errorMessage = false;

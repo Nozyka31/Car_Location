@@ -1,9 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+
+    {% if(session) %}
+    <h2>Welcome {{session.firstname}}</h2>
+    {% endif %}
     <h1>Look if we have cars to rent in your city !</h1>
     <form method="post" action="/announce/search">
-        <div>
+        <div class="container">
         <input type="search" name="search" placeholder="Search a city">
         <input type="submit">
         </div>
