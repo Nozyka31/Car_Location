@@ -2,14 +2,17 @@
 
 {% block content %}
 
-
-    <h1>Edit search {{ search.Car_id }}</h1>
-    <form method="GET" action="/announce">
-        <div>
-        <input type="search" name="s" placeholder="Search a city">
-        <input type="submit" name="Envoyer">
-        </div>
-    </form>
-            
+    <div class="show">
+        <h1>Edit search {{ search.Car_id }}</h1>
+        <form method="GET" action="/announce">
+            <input type="search" name="s" placeholder="Search a city">
+            <input type="submit" name="Envoyer">
+        </form>
+            <div class="picture">
+                <img src="\assets\images\illustration-application-location-transport_335657-438.jpg">
+            </div>
+    </div>
+   
+         
 
 {% endblock %}

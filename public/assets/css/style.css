@@ -24,6 +24,7 @@
     display: flex;
     flex-direction: row;
 
+
 }
 
 #message_list{
@@ -99,3 +100,27 @@
     border-radius: 50px;
     padding: 1%;
 }
+
+.linear-gradient{
+    background:linear-gradient( rgb(177, 227, 238),white);
+
+}
+
+
+    
+
+.show{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-end;
+}
+
+.picture img{
+    margin-top: 70px;
+    margin-bottom: 150px;
+    width: 100%;
+}
+    
+
