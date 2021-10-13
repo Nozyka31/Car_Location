@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `announce` (
   `city` varchar(50) CHARACTER SET utf8 NOT NULL,
   `km` int(11) NOT NULL,
   `daily_price` int(11) NOT NULL,
-  `picture` varchar(50) CHARACTER SET utf8 NULL,
+  `picture` varchar(350) CHARACTER SET utf8 NULL,
   `year` INT NOT NULL,
   `rate` float NULL,
   PRIMARY KEY (`id`),
@@ -114,16 +114,13 @@ CREATE TABLE IF NOT EXISTS `contract` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `renter_id` int(11) NOT NULL,
-  `car_id` int(11) NOT NULL,
-  `registration_number` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `start_date` datetime NOT NULL,
-  `estimated_end` datetime NOT NULL,
-  `reel_end` datetime NOT NULL,
+  `announce_id` int(11) NOT NULL,
+  `duration` INT NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_users_contract` (`user_id`),
   KEY `fk_users_renter_contract` (`renter_id`),
-  KEY `fk_cars_contract` (`car_id`)
+  KEY `fk_announce_contract` (`announce_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
  
  
@@ -141,7 +138,7 @@ ALTER TABLE `announce`
 -- Contraintes pour la table `contract`
 --
 ALTER TABLE `contract`
-  ADD CONSTRAINT `fk_cars_contract` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`),
+  ADD CONSTRAINT `fk_announce_contract` FOREIGN KEY (`announce_id`) REFERENCES `announce` (`id`),
   ADD CONSTRAINT `fk_users_contract` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_users_renter_contract` FOREIGN KEY (`renter_id`) REFERENCES `users` (`id`);
  

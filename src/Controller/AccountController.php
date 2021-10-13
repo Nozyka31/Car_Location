@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Model\AccountManager;
+use App\Model\AnnounceManager;
+use App\Model\BookingManager;
 
 /**
  * Class AccountController
@@ -42,16 +44,36 @@ class AccountController extends AbstractController
      */
     public function show(int $id)
     {
+        $bookingManager = new BookingManager();
         $accountManager = new AccountManager();
-        $account = $accountManager->selectOneById($id);
-
-        if(!$id || !$account)
+        $announceManager = new AnnounceManager();
+        $account = $accountManager->selectOneByID($id);
+        $booking = $bookingManager->selectOneByUserId($id);
+        $announces = $announceManager->selectAll();
+        if($booking)
         {
-            header("Location: /account");
+            $announce = $announceManager->selectOneByID($booking['announce_id']);
+            $accountRenter = $accountManager->selectOneByID($booking['renter_id']);
         }
 
-        return $this->twig->render('Account/show.html.twig', ['account' => $account]);
+        if($booking)
+        {
+            return $this->twig->render('Account/show.html.twig', [
+                'account' => $account,
+                'accountRenter' => $accountRenter,
+                'announce' => $announce,
+                'announces' => $announces,
+                'booking' => $booking,
+            ]);
+        }
+        else
+    {
+        return $this->twig->render('Account/show.html.twig', [
+            'account' => $account,
+        ]);
     }
+    }
+    
 
 
     /**
@@ -65,6 +87,10 @@ class AccountController extends AbstractController
      */
     public function edit(int $id): string
     {
+        /*if (!isset($_SESSION["user"]) || $id == 0) {
+            header("location: /");
+        }
+*/
         $accountManager = new AccountManager();
         $account = $accountManager->selectOneById($id);
 
@@ -119,8 +145,7 @@ class AccountController extends AbstractController
             $accountManager = new AccountManager();
 
             $alreadyUsed = $accountManager->selectOneByEmail($_POST['email']);
-            
-            if(!$alreadyUsed && isset(
+            if(isset(
                 $_POST["password"],
                 $_POST['firstname'],
                 $_POST['lastname'],
@@ -133,6 +158,7 @@ class AccountController extends AbstractController
                 $_POST['phone'],
                 ))
             {
+                
                 $hashpassword = password_hash($_POST['password'], PASSWORD_ARGON2ID);
                 $account = [
                     'firstname' => $_POST['firstname'],
@@ -147,7 +173,7 @@ class AccountController extends AbstractController
                     'phone' => $_POST['phone'],
                     'role' => 'ROLE_USER',
                 ];
-
+                
                 $id = $accountManager->insert($account);
                 header('Location:/account/show/' . $id);
             }

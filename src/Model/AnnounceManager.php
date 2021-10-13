@@ -105,4 +105,27 @@ class AnnounceManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function search(string $search, array $announces):array
+    {
+        $indexAnnounces = array();
+        foreach ($announces as $announce)
+        {
+            if($search == $announce['city'])
+            {
+                array_push($indexAnnounces, $announce);
+            }
+        }
+
+        return $indexAnnounces;
+    }
+
+    public function changePrice(int $total_price, int $daily_price)
+    {
+
+        $total_price += $daily_price;
+
+        return $total_price;
+    }
+    
 }

@@ -2,17 +2,17 @@
 
 {% block content %}
 
-    <div class="show">
-        <h1>Edit search {{ search.Car_id }}</h1>
-        <form method="GET" action="/announce">
-            <input type="search" name="s" placeholder="Search a city">
-            <input type="submit" name="Envoyer">
-        </form>
-            <div class="picture">
-                <img src="\assets\images\illustration-application-location-transport_335657-438.jpg">
-            </div>
+
+    {% if(session) %}
+    <h2>Welcome {{session.firstname}}</h2>
+    {% endif %}
+    <h1>Look if we have cars to rent in your city !</h1>
+    <form method="post" action="/announce/search">
+        <div class="container">
+        <input type="search" name="search" placeholder="Search a city">
+        <input type="submit">
+        </div>
+    </form>
     </div>
-   
-         
 
 {% endblock %}

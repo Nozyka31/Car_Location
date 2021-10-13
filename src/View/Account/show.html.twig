@@ -19,5 +19,37 @@
             <a class="btn btn-danger" href="/account/delete/{{account.id}}">Delete</a>
         </div>
     </div> 
-    <a class="btn btn-primary mt-3 mb-3" href="/account">Back to list</a>
+
+    {% if(booking) %} 
+    <div class="card border-warning mt-3 mb-3 col-4">
+                    <h5 class="card-title card-header bg-danger">My contracts</h5>
+            <div class="card-body">
+            <p class="card-text">Contract with : {{ accountRenter.firstname }} {{ accountRenter.lastname }}</p>
+            <p class="card-text">Car : {{ announce.brand }} {{ announce.model }}</p>
+            <p class="card-text">Pick up the car here : {{ accountRenter.address }}, {{ accountRenter.postal_code }} in {{ accountRenter.city }}</p>
+            <p class="card-text">Phone number : {{ accountRenter.phone }}</p>
+        </div>
+    </div> 
+    {% endif %}
+
+    {% for a in announces %}
+    {% if(a.user_id == session.id) %}
+    <div class="card border-warning mt-3 mb-3 col-4">
+                    <h5 class="card-title card-header bg-danger">{{ a.title }}</h5>
+            <div class="card-body">
+            <p class="card-text">{{ accountRenter.firstname }} {{ accountRenter.lastname }}</p>
+            <p class="card-text">Car : {{ a.brand }} {{ a.model }}</p>
+        </div>
+
+            <a class="btn btn-success" href="/announce/edit/{{ a.id }}">Edit</a>
+            <a class="btn btn-danger" href="/announce/delete/{{a.id}}">Delete</a>
+    </div> 
+    {% endif %}
+    {% endfor %}
+
+    {% if(account.role == 'ADMIN') %} 
+    <a class="btn btn-danger mt-3 mb-3" href="/account">ADMIN ACCOUNTS</a>
+    <a class="btn btn-danger mt-3 mb-3" href="/announce">ADMIN ANNOUNCES</a>
+    {% endif %}
+    <a class="btn btn-primary mt-3 mb-3" href="/">Back to main page</a>
 {% endblock %}

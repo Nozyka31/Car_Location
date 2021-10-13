@@ -101,6 +101,7 @@
     padding: 1%;
 }
 
+
 .linear-gradient{
     background:linear-gradient( rgb(177, 227, 238),white);
 
@@ -124,3 +125,11 @@
 }
     
 
+#image_book{
+    max-width: 25vw;
+}
+
+#booking{
+    display: flex;
+    flex-direction: row;
+}

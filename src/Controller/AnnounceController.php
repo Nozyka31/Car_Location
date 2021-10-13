@@ -25,9 +25,16 @@ class AnnounceController extends AbstractController
         $announceManager = new AnnounceManager();
         $announces = $announceManager->selectAll();
 
-        return $this->twig->render('Announce/index.html.twig', [
-            'announces' => $announces,
-        ]);
+        if($_SESSION['user']['role'] == "ADMIN")
+        {
+            return $this->twig->render('Announce/index.html.twig', [
+                'announces' => $announces,
+            ]);
+        }
+        else
+        {
+            return $this->twig->render('/');
+        }
     }
 
 
@@ -173,8 +180,6 @@ class AnnounceController extends AbstractController
     public function add()
     {
         $userID=$_SESSION['user']['id'];
-        var_dump($userID);
-        die;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $errorMessage = false;
@@ -268,5 +273,22 @@ class AnnounceController extends AbstractController
         $announceManager = new AnnounceManager();
         $announceManager->delete($id);
         header('Location:/announce/index');
+    }
+
+    public function search()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $announceManager = new AnnounceManager();
+            $allAnnounces = $announceManager->selectAll();
+            $searchedAnnouces = $announceManager->search($_POST['search'], $allAnnounces);
+
+
+            if($searchedAnnouces != NULL)
+            {
+                return $this->twig->render('Announce/index.html.twig', [
+                    'announces' => $searchedAnnouces,
+                ]);
+            }
+        }
     }
 }
