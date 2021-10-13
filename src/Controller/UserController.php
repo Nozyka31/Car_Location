@@ -97,9 +97,10 @@ class UserController extends AbstractController
             } 
             
             if (!$connect){
-                $errorMessage = "problem with your e-mail or password";
-                var_dump($errorMessage);
-                die;
+                $errorMessage = "There is an issue with your e-mail or password. Please try again";
+                return $this->twig->render('user/login.html.twig', [
+                    'errormessage' => $errorMessage,
+                ]);
                    
             } else{
 

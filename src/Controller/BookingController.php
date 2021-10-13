@@ -65,7 +65,10 @@ class BookingController extends AbstractController
     {
         if(!$_SESSION)
         {
-            var_dump($_SESSION);
+            $errorMessage = 'Warning. You must be logged to book a car.';
+            return $this->twig->render('Home/index.html.twig', [
+                'errormessage' => $errorMessage,
+            ]);
         }
         else
         {

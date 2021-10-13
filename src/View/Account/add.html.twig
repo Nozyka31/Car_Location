@@ -10,6 +10,12 @@
 {% block content %}
     <h1>Inscription</h1>
 
+    {% if(errormessage) %}
+        <div class="p-3 mb-2 bg-danger text-white">
+            <h2>{{errormessage}}</h2>
+        </div>
+    {% endif %}
+
     <form method="post">
             <input type="hidden" value={{ account.id }} name="id">
             <div class="d-flex row">
@@ -59,9 +65,9 @@
                 </div>
             </div>
 
-            <input type="submit" class="btn btn-primary mt-3 mb-3" value="Add">
-            <a class="btn btn-primary" href="/account">Retour</a>
+            <input type="submit" class="btn btn-success mt-3 mb-3" value="Add">
+            <a class="btn btn-warning" href="/account">Cancel</a>
         </form>
 
-<a class="btn btn-primary" href="/account">back to list</a>
+<a class="btn btn-dark" href="/">Back to main page</a>
 {% endblock %}

@@ -108,7 +108,9 @@
 }
 
 
-    
+.carousel{
+    max-width: 1200px;
+}    
 
 .show{
 
