@@ -33,7 +33,7 @@ class AnnounceController extends AbstractController
         }
         else
         {
-            return $this->twig->render('/');
+            return $this->twig->render('Home/index.html.twig');
         }
     }
 
@@ -148,7 +148,6 @@ class AnnounceController extends AbstractController
             $announce['model'] = $_POST['model'];
             $announce['color'] = $_POST['color'];
             $announce['power'] = $_POST['power'];
-            $announce['city'] = $_POST['city'];
             $announce['km'] = $_POST['km'];
             $announce['daily_price'] = $_POST['daily_price'];
             if($fileOnServer)
@@ -161,7 +160,7 @@ class AnnounceController extends AbstractController
             if($announce['title'] && $announce['brand'] && $announce['model'] && $announce['daily_price'])
             {
                 $id = $announceManager->update($announce);
-                header("Location: /announce");
+                header('Location:/announce/show/' . $announce['id']);
             }
         }
 
@@ -179,7 +178,17 @@ class AnnounceController extends AbstractController
      */
     public function add()
     {
-        $userID=$_SESSION['user']['id'];
+        if($_SESSION)
+        {
+            $userID=$_SESSION['user']['id'];
+        }
+        else
+        {
+            $errorMessage = 'Warning. You must be logged to access to this page.';
+            return $this->twig->render('Home/index.html.twig', [
+                'errormessage' => $errorMessage,
+            ]);
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $errorMessage = false;

@@ -1,12 +1,12 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class="container">
 {% if(session.role == 'ADMIN') %}
     <h1>Admin Announces</h1>
 {% else %}
     <h1>Announces</h1>
 {% endif %}
-
     <p>Here are the results for your research.</p>
         {% for announce in announces %}
             <a href="/announce/show/{{announce.id}}" class="announce">
@@ -28,5 +28,7 @@
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
-    <a href="/">Back to the main page</a>
+    <a href="/" class="btn btn-dark">Back to the main page</a>
+</div>
+<br>    
 {% endblock %}

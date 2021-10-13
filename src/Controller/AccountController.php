@@ -27,9 +27,18 @@ class AccountController extends AbstractController
         $accountManager = new AccountManager();
         $accounts = $accountManager->selectAll();
 
-        return $this->twig->render('Account/index.html.twig', [
-            'accounts' => $accounts,
-        ]);
+        if($_SESSION['user']['role'] == "ADMIN")
+        {
+            return $this->twig->render('Account/index.html.twig', [
+                'accounts' => $accounts,
+            ]);
+        }
+        else
+        {
+            return $this->twig->render('Home/index.html.twig');
+        }
+
+        
     }
 
 
@@ -122,6 +131,8 @@ class AccountController extends AbstractController
             
             if($account['firstname'] && $account['lastname'] && $account['username'] && $account['password'])
             {
+                var_dump("edit");
+                die;
                 $id = $accountManager->update($account);
                 header("Location: /account");
             }
@@ -175,7 +186,7 @@ class AccountController extends AbstractController
                 ];
                 
                 $id = $accountManager->insert($account);
-                header('Location:/account/show/' . $id);
+                header('Location:/user/login/');
             }
         }
 

@@ -77,7 +77,6 @@ class AnnounceManager extends AbstractManager
         `model` = :model,
         `color` = :color,
         `power` = :power,
-        `city` = :city,
         `km` = :km,
         `daily_price` = :daily_price,
         `picture` = :picture,
@@ -93,7 +92,6 @@ class AnnounceManager extends AbstractManager
         $statement->bindValue(':model', $announce['model'], \PDO::PARAM_STR);
         $statement->bindValue(':color', $announce['color'], \PDO::PARAM_STR);
         $statement->bindValue(':power', $announce['power'], \PDO::PARAM_STR);
-        $statement->bindValue(':city', $announce['city'], \PDO::PARAM_STR);
         $statement->bindValue(':km', $announce['km'], \PDO::PARAM_STR);
         $statement->bindValue(':daily_price', $announce['daily_price'], \PDO::PARAM_STR);
         $statement->bindValue(':picture', $announce['picture'], \PDO::PARAM_STR);

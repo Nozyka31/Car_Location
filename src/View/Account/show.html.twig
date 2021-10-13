@@ -4,7 +4,7 @@
     <h1>Account {{ account.firstname|capitalize }} {{ account.lastname|capitalize }}</h1>
     
     <div class="card border-primary mt-3 mb-3 col-4">
-                    <h5 class="card-title card-header bg-warning">{{ account.firstname|capitalize }} {{ account.lastname|capitalize }}</h5>
+                    <h5 class="card-title card-header bg-success">{{ account.firstname|capitalize }} {{ account.lastname|capitalize }}</h5>
             <div class="card-body">
             <p class="card-text">Username : {{ account.username }}</p>
             <p class="card-text">Birthday : {{ account.birthday|date("d/m/Y") }}</p>
@@ -22,7 +22,7 @@
 
     {% if(booking) %} 
     <div class="card border-warning mt-3 mb-3 col-4">
-                    <h5 class="card-title card-header bg-danger">My contracts</h5>
+                    <h5 class="card-title card-header bg-warning">My contracts</h5>
             <div class="card-body">
             <p class="card-text">Contract with : {{ accountRenter.firstname }} {{ accountRenter.lastname }}</p>
             <p class="card-text">Car : {{ announce.brand }} {{ announce.model }}</p>
@@ -32,17 +32,19 @@
     </div> 
     {% endif %}
 
+    {% if(announces) %}
+    <h3>My announces</h3>
+    {% endif %}
     {% for a in announces %}
     {% if(a.user_id == session.id) %}
     <div class="card border-warning mt-3 mb-3 col-4">
-                    <h5 class="card-title card-header bg-danger">{{ a.title }}</h5>
+                    <h5 class="card-title card-header bg-info">{{ a.title }}</h5>
             <div class="card-body">
             <p class="card-text">{{ accountRenter.firstname }} {{ accountRenter.lastname }}</p>
             <p class="card-text">Car : {{ a.brand }} {{ a.model }}</p>
-        </div>
-
             <a class="btn btn-success" href="/announce/edit/{{ a.id }}">Edit</a>
             <a class="btn btn-danger" href="/announce/delete/{{a.id}}">Delete</a>
+        </div>
     </div> 
     {% endif %}
     {% endfor %}
@@ -51,5 +53,5 @@
     <a class="btn btn-danger mt-3 mb-3" href="/account">ADMIN ACCOUNTS</a>
     <a class="btn btn-danger mt-3 mb-3" href="/announce">ADMIN ANNOUNCES</a>
     {% endif %}
-    <a class="btn btn-primary mt-3 mb-3" href="/">Back to main page</a>
+    <a class="btn btn-dark mt-3 mb-3" href="/">Back to main page</a>
 {% endblock %}
